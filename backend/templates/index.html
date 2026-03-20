@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Gig Worker Insurance</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="/static/style.css">
+
+<!-- LOGIN PROTECTION -->
+<script>
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "/login";
+}
+</script>
+
+<style>
+
+/* Navbar at top */
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    background: transparent;
+    z-index: 1000;
+}
+
+.navbar a{
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Push container down so navbar doesn't overlap */
+.container{
+    margin-top: 80px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<div class="navbar">
+<a href="/login">Login</a> |
+<a href="/register">Register</a> |
+<a href="/dashboard">Dashboard</a>
+</div>
+
+<div class="container">   
+
+<h1>Gig Worker Insurance</h1>
+
+<label for="name">Name</label>
+<input type="text" id="name" placeholder="Enter your name">
+
+<label for="hours">Working Hours</label>
+<input type="number" id="hours" placeholder="Enter hours worked">
+
+<label for="risk">City Risk Level</label>
+<input type="number" id="risk" placeholder="Enter city risk (1-5)">
+
+<label for="claims">Past Claims</label>
+<input type="number" id="claims" placeholder="Enter past claims">
+
+<label for="weather">Weather Condition</label>
+<select id="weather">
+<option value="0">Normal</option>
+<option value="1">Rain</option>
+</select>
+
+<button type="button" onclick="calculatePremium()">Calculate Premium</button>
+
+<!-- RESULT -->
+<div id="result"></div>
+
+<!-- DASHBOARD BUTTON -->
+<button type="button" class="dashboard-btn" onclick="goDashboard()">Go to Dashboard</button>
+
+</div>
+
+<!-- JavaScript -->
+<script src="/static/script.js"></script>
+
+</body>
+</html>

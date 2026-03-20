@@ -1,0 +1,74 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff758c, #6a82fb);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main Card */
+.container{
+    background: white;
+    padding: 30px;
+    width: 350px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* Title */
+h1{
+    margin-bottom: 20px;
+}
+
+/* Labels */
+label{
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Inputs */
+input, select{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Buttons */
+button{
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to right, #ff5e78, #ff7eb3);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover{
+    opacity: 0.9;
+}
+
+/* Result Box */
+#result{
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f1f1f1;
+    font-weight: bold;
+}
+
+/* Dashboard Button */
+.dashboard-btn{
+    background: linear-gradient(to right, #36d1dc, #5b86e5);
+}

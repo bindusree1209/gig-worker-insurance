@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login - Gig Insurance</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background: linear-gradient(to right, #ff758c, #6a82fb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+}
+
+h2{
+    margin-bottom: 20px;
+}
+
+input{
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button{
+    width: 100%;
+    padding: 10px;
+    background: #ff5e78;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover{
+    background: #e04860;
+}
+
+#msg{
+    color: red;
+    margin-top: 10px;
+}
+
+.register-link{
+    margin-top: 15px;
+}
+
+a{
+    text-decoration: none;
+    color: #6a82fb;
+    font-weight: bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Login</h2>
+
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p id="msg"></p>
+
+<div class="register-link">
+New User? <a href="/register">Register Here</a>
+</div>
+
+</div>
+
+<script>
+
+function login(){
+
+let username = document.getElementById("username").value;
+let password = document.getElementById("password").value;
+
+if(username !== "" && password !== ""){
+
+localStorage.setItem("loggedIn","true");
+localStorage.setItem("user",username);
+
+window.location.href = "/index";
+
+}
+else{
+
+document.getElementById("msg").innerHTML = "Invalid login";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

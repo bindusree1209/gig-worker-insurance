@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+<script>
+// Protect dashboard (must login first)
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "/login";
+}
+</script>
+
+<style>
+
+/* Top navbar */
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    z-index: 1000;
+}
+
+.navbar a{
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Push content down */
+.container{
+    margin-top: 80px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<div class="navbar">
+<a href="/index">Home</a>
+</div>
+
+<div class="container">
+
+<h1>Dashboard</h1>
+
+<p id="welcome"></p>
+
+<button onclick="logout()">Logout</button>
+
+<hr>
+
+<h3>Premium History</h3>
+
+<table border="1" width="100%" id="table">
+<tr>
+<th>Name</th>
+<th>Premium</th>
+<th>Fraud</th>
+</tr>
+</table>
+
+</div>
+
+<script>
+
+// Show logged in user
+let name = localStorage.getItem("user");
+
+if(name){
+    document.getElementById("welcome").innerHTML = "Welcome " + name;
+}else{
+    document.getElementById("welcome").innerHTML = "Welcome User";
+}
+
+// Load premium history
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
+let table = document.getElementById("table");
+
+history.forEach(function(item){
+
+let row = table.insertRow();
+
+let cell1 = row.insertCell(0);
+let cell2 = row.insertCell(1);
+let cell3 = row.insertCell(2);
+
+cell1.innerHTML = item.name || "-";
+cell2.innerHTML = "₹" + (item.premium || "0");
+cell3.innerHTML = item.fraud || "No";
+
+if(item.fraud === "Yes" || item.fraud === "High"){
+    cell3.style.color = "red";
+}else{
+    cell3.style.color = "green";
+}
+
+});
+
+// Logout
+function logout(){
+    localStorage.removeItem("loggedIn");
+    window.location.href = "/login";
+}
+
+</script>
+
+</body>
+</html>

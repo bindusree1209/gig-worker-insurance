@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Register - Gig Insurance</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Register</h2>
+
+<input type="text" id="newUser" placeholder="Username">
+<input type="password" id="newPass" placeholder="Password">
+
+<button onclick="register()">Register</button>
+
+<p id="msg"></p>
+
+<p>Already have an account? <a href="/login">Login</a></p>
+
+</div>
+
+<script>
+
+function register(){
+
+let user = document.getElementById("newUser").value.trim();
+let pass = document.getElementById("newPass").value.trim();
+
+if(user === "" || pass === ""){
+    document.getElementById("msg").style.color = "red";
+    document.getElementById("msg").innerHTML = "Please fill all fields";
+    return;
+}
+
+// store user in localStorage
+localStorage.setItem("username", user);
+localStorage.setItem("password", pass);
+
+document.getElementById("msg").style.color = "green";
+document.getElementById("msg").innerHTML = "Registration Successful! Redirecting to Login...";
+
+setTimeout(function(){
+window.location.href = "/login";
+},1500);
+
+}
+
+</script>
+
+</body>
+</html>
